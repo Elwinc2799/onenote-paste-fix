@@ -1,8 +1,10 @@
 # OneNote Paste Fix
 
-When you copy text from OneNote and paste it into GitHub (issues, pull requests, comments, etc.), GitHub sometimes receives image data instead of plain text — and shows your content as an embedded image rather than readable text.
+When you copy text from OneNote and paste it into another app — like Microsoft Teams, GitHub, Slack, or a browser — the text sometimes appears as an embedded image instead of actual text you can read, edit, or search.
 
-This AutoHotkey script fixes that. It intercepts your Ctrl+C while OneNote is active and strips the image data from the clipboard, leaving only plain text. Your pastes into GitHub will work correctly.
+This is a known OneNote behaviour: it adds image data to the clipboard alongside plain text, and many apps pick up the image instead of the text.
+
+This AutoHotkey script fixes that. It intercepts your Ctrl+C while OneNote is active and strips the image data from the clipboard, leaving only plain text. Paste into any app and you'll get real text every time.
 
 ---
 
@@ -44,7 +46,7 @@ Every time you press `Ctrl+C` while OneNote is the active window, the script:
 
 1. Lets the copy happen normally.
 2. Checks if plain text is available on the clipboard.
-3. If it is, replaces the clipboard contents with just the plain text — discarding any image data OneNote added alongside it.
+3. If it is, replaces the clipboard contents with just the plain text — discarding the image data OneNote added alongside it.
 
 It works with both:
 - **Desktop OneNote** (`ONENOTE.EXE`)
@@ -58,7 +60,7 @@ Outside of OneNote, `Ctrl+C` works exactly as normal — nothing is changed.
 
 1. Start the script (or let it start automatically on login).
 2. Copy text from OneNote as usual with `Ctrl+C`.
-3. Paste into GitHub — you'll get plain text every time.
+3. Paste anywhere — Teams, GitHub, Slack, a browser, wherever — and you'll get plain text.
 
 ---
 
@@ -76,7 +78,7 @@ Make sure AutoHotkey is installed. Try right-clicking the `.ahk` file and select
 **It's still pasting as an image**
 Make sure the script is running (check the system tray). If you're using the Store version of OneNote, verify your window title contains "OneNote" — the script checks for this.
 
-**I want to stop it only for OneNote but keep AutoHotkey**
+**I want to temporarily disable it**
 Right-click the tray icon and select **Suspend Hotkeys**, then resume it when needed.
 
 ---
